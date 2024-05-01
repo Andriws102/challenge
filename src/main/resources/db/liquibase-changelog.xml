@@ -8,6 +8,17 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-    <include file="db/changelog/create_users.sql"/>
+    <!-- Scripts base -->
+    <include file="db/changelog/create_users_table.sql"/>
+    <include file="db/changelog/create_user_accounts_table.sql"/>
+    <include file="db/changelog/create_authors_table.sql"/>
+    <include file="db/changelog/create_books_table.sql"/>
+    <include file="db/changelog/create_publishers_table.sql"/>
+    <include file="db/changelog/create_books_copies_table.sql"/>
+    <include file="db/changelog/create_book_authors_table.sql"/>
+    <include file="db/changelog/create_booking_table.sql"/>
+    <include file="db/changelog/create_reviews_table.sql"/>
+
+    <!-- Scripts data test -->
 
 </databaseChangeLog>
