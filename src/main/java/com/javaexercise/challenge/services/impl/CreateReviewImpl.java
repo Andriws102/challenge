@@ -32,24 +32,18 @@ public class CreateReviewImpl implements CreateReview {
     @Observed(name = "CreateReviewImpl")
     public Review apply(CreateReviewRequestDTO createReviewRequestDTO) {
 
-        try {
-            var user = userRepository.findById(createReviewRequestDTO.getUserId()).orElse(null);
-            var book = bookRepository.findById(createReviewRequestDTO.getBookId()).orElse(null);
+        var user = userRepository.findById(createReviewRequestDTO.getUserId()).orElse(null);
+        var book = bookRepository.findById(createReviewRequestDTO.getBookId()).orElse(null);
 
-            Review review = Review.builder()
-                    .user(user)
-                    .book(book)
-                    .comment(createReviewRequestDTO.getComment())
-                    .rate(createReviewRequestDTO.getRate())
-                    .commentedAt(new Date())
-                    .build();
+        Review review = Review.builder()
+                .user(user)
+                .book(book)
+                .comment(createReviewRequestDTO.getComment())
+                .rate(createReviewRequestDTO.getRate())
+                .commentedAt(new Date())
+                .build();
 
-            return reviewRepository.save(review);
-
-        }catch (Exception e){
-            log.error("Error CreateReviewImpl: {e.getMessage()}" );
-            throw e;
-        }
+        return reviewRepository.save(review);
 
     }
 }

@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS booking (
     booking_at datetime NOT NULL,
     booking_since datetime NOT NULL,
     booking_until datetime NOT NULL,
-    returned_at datetime NOT NULL,
+    returned_at datetime,
     status_id int,
     PRIMARY KEY (id),
     FOREIGN KEY (book_copy_id) REFERENCES books_copies(id),
