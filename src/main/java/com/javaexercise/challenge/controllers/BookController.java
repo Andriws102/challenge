@@ -5,6 +5,7 @@ import com.javaexercise.challenge.services.GetBookByAuthor;
 import com.javaexercise.challenge.services.GetBookById;
 import com.javaexercise.challenge.services.GetBookByTitle;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -23,38 +24,38 @@ public class BookController {
     private GetBookByAuthor getBookByAuthor;
 
     @GetMapping("/{id}")
-    public GetBookResponseDTO getBookById(@PathVariable Long id,
-                                          @RequestParam Optional<Boolean> alldata,
-                                          @RequestParam Optional<Boolean> onlyavailable) {
-        return getBookById.apply(
+    public ResponseEntity<GetBookResponseDTO> getBookById(@PathVariable Long id,
+                                                          @RequestParam Optional<Boolean> alldata,
+                                                          @RequestParam Optional<Boolean> onlyavailable) {
+        return ResponseEntity.ok(getBookById.apply(
                 GetBookByIdRequestDTO.builder()
                         .id(id)
                         .allData(alldata.orElse(false))
                         .onlyAvailable(onlyavailable.orElse(false))
-                        .build());
+                        .build()));
     }
 
-    @GetMapping("/getbytitle")
-    public GetBooksResponseDTO getBookByTitle(@RequestParam String title,
+    @GetMapping("/getByTitle")
+    public ResponseEntity<GetBooksResponseDTO> getBookByTitle(@RequestParam String title,
                                               @RequestParam Optional<Boolean> alldata,
                                               @RequestParam Optional<Boolean> onlyavailable) {
-        return getBookByTitle.apply(
+        return ResponseEntity.ok(getBookByTitle.apply(
                 GetBookByTitleRequestDTO.builder()
                         .title(title)
                         .allData(alldata.orElse(false))
                         .onlyAvailable(onlyavailable.orElse(false))
-                        .build());
+                        .build()));
     }
 
-        @GetMapping("/getbyauthor")
-    public GetBooksResponseDTO getBookByAuthor(@RequestParam String authorname,
+        @GetMapping("/getByAuthor")
+    public ResponseEntity<GetBooksResponseDTO> getBookByAuthor(@RequestParam String authorname,
                                                @RequestParam Optional<Boolean> alldata,
                                                @RequestParam Optional<Boolean> onlyavailable) {
-        return getBookByAuthor.apply(
+        return ResponseEntity.ok(getBookByAuthor.apply(
                 GetBookByAuthorRequestDTO.builder()
                         .authorName(authorname)
                         .allData(alldata.orElse(false))
                         .onlyAvailable(onlyavailable.orElse(false))
-                        .build());
+                        .build()));
     }
 }

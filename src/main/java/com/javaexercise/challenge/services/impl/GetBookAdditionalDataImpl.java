@@ -6,6 +6,7 @@ import com.javaexercise.challenge.repositories.BookAuthorRepository;
 import com.javaexercise.challenge.repositories.BookCopyRepository;
 import com.javaexercise.challenge.repositories.ReviewRepository;
 import com.javaexercise.challenge.services.GetBookAdditionalData;
+import com.javaexercise.challenge.services.GetReviewByBookId;
 import io.micrometer.observation.annotation.Observed;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Service;
 public class GetBookAdditionalDataImpl implements GetBookAdditionalData {
 
     @Autowired
-    private final ReviewRepository reviewRepository;
+    private final GetReviewByBookId getReviewByBookId;
 
     @Autowired
     private final BookAuthorRepository bookAuthorRepository;
@@ -31,7 +32,7 @@ public class GetBookAdditionalDataImpl implements GetBookAdditionalData {
     public GetBookResponseDTO apply(CopiesInfoDto info) {
 
         GetBookResponseDTO getBookResponseDTO = new GetBookResponseDTO();
-        getBookResponseDTO.setReviews(reviewRepository.findByBookId(info.getBookId()));
+        getBookResponseDTO.setReviews(getReviewByBookId.apply(info.getBookId()));
         getBookResponseDTO.setBookAuthors(bookAuthorRepository.findByBookId(info.getBookId()));
 
         if(info.getOnlyAvailable()){
