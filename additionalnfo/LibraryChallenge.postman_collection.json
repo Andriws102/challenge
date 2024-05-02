@@ -1,0 +1,345 @@
+{
+	"info": {
+		"_postman_id": "eb1c85f7-1e0d-438b-af29-b0b6d4e1c616",
+		"name": "LibraryChallenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19713950"
+	},
+	"item": [
+		{
+			"name": "findBookByAuthorName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/books/getByAuthor?alldata=true&authorname=James&onlyavailable=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"books",
+						"getByAuthor"
+					],
+					"query": [
+						{
+							"key": "alldata",
+							"value": "true"
+						},
+						{
+							"key": "authorname",
+							"value": "James"
+						},
+						{
+							"key": "onlyavailable",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findBookByPartialTitle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/books/getByTitle?alldata=true&title=vitae&onlyavailable=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"books",
+						"getByTitle"
+					],
+					"query": [
+						{
+							"key": "alldata",
+							"value": "true"
+						},
+						{
+							"key": "title",
+							"value": "vitae"
+						},
+						{
+							"key": "onlyavailable",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getBookById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/books/150?alldata=true&onlyavailable=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"books",
+						"150"
+					],
+					"query": [
+						{
+							"key": "alldata",
+							"value": "true"
+						},
+						{
+							"key": "onlyavailable",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "serviceHealth",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/actuator/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"actuator",
+						"health"
+					],
+					"query": [
+						{
+							"key": "alldata",
+							"value": "true",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Metrics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/actuator/metrics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"actuator",
+						"metrics"
+					],
+					"query": [
+						{
+							"key": "alldata",
+							"value": "true",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createReview",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookId\": 2,\r\n    \"userId\": 15,\r\n    \"comment\": \"Prueba\",\r\n    \"rate\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/reviews/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reviews",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getReviewById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/reviews/51",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reviews",
+						"51"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getReviewByBook",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/reviews/getByBook/45",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reviews",
+						"getByBook",
+						"45"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getReviewByUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/reviews/getByUser/15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reviews",
+						"getByUser",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Reservation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookCopyId\": 2,\r\n    \"userId\": 15,\r\n    \"bookingUntil\": \"2025-02-01\",\r\n    \"bookingSince\": \"2024-05-04\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/reservations/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservations",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CancelReservation",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/reservations/cancelReservation/49",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservations",
+						"cancelReservation",
+						"49"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FinishReservation",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/reservations/finishReservation/49",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservations",
+						"finishReservation",
+						"49"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProcessReservation",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/reservations/processReservation/49",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservations",
+						"processReservation",
+						"49"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
