@@ -19,6 +19,4 @@ public class Publisher {
     @Column(nullable = false)
     private String name;
     private String country;
-    @OneToMany(mappedBy = "publisher")
-    private Set<BookCopy> books;
 }

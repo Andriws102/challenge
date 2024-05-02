@@ -14,10 +14,10 @@ public class BookCopy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "book_id", referencedColumnName = "id")
     private Book book;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "publisher_id", referencedColumnName = "id")
     private Publisher publisher;
     @Column(nullable = false)

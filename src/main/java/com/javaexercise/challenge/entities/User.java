@@ -30,6 +30,4 @@ public class User {
     private Date createdAt;
     @Column(nullable = false)
     private int statusId;
-    @OneToMany(mappedBy = "user")
-    private Set<Review> reviews;
 }

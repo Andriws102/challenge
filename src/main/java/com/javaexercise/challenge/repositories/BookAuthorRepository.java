@@ -3,5 +3,9 @@ package com.javaexercise.challenge.repositories;
 import com.javaexercise.challenge.entities.BookAuthor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface BookAuthorRepository extends JpaRepository<BookAuthor,Long> {
+
+    List<BookAuthor> findByBookId(Long bookId);
 }
