@@ -1,9 +1,7 @@
 package com.javaexercise.challenge.controllers;
 
-import com.javaexercise.challenge.dtos.GetBookByIdRequestDTO;
-import com.javaexercise.challenge.dtos.GetBookByTitleRequestDTO;
-import com.javaexercise.challenge.dtos.GetBookResponseDTO;
-import com.javaexercise.challenge.dtos.GetBooksResponseDTO;
+import com.javaexercise.challenge.dtos.*;
+import com.javaexercise.challenge.services.GetBookByAuthor;
 import com.javaexercise.challenge.services.GetBookById;
 import com.javaexercise.challenge.services.GetBookByTitle;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +19,21 @@ public class BookController {
     @Autowired
     private GetBookByTitle getBookByTitle;
 
+    @Autowired
+    private GetBookByAuthor getBookByAuthor;
+
     @GetMapping("/{id}")
-    public GetBookResponseDTO getBook(@PathVariable Long id, @RequestParam Optional<Boolean> alldata) {
+    public GetBookResponseDTO getBookById(@PathVariable Long id, @RequestParam Optional<Boolean> alldata) {
         return getBookById.apply(GetBookByIdRequestDTO.builder().id(id).allData(alldata.orElse(false)).build());
     }
 
     @GetMapping("/getbytitle")
-    public GetBooksResponseDTO getBook(@RequestParam String title, @RequestParam Optional<Boolean> alldata) {
+    public GetBooksResponseDTO getBookByTitle(@RequestParam String title, @RequestParam Optional<Boolean> alldata) {
         return getBookByTitle.apply(GetBookByTitleRequestDTO.builder().title(title).allData(alldata.orElse(false)).build());
+    }
+
+        @GetMapping("/getbyauthor")
+    public GetBooksResponseDTO getBookByAuthor(@RequestParam String authorname, @RequestParam Optional<Boolean> alldata) {
+        return getBookByAuthor.apply(GetBookByAuthorRequestDTO.builder().authorName(authorname).allData(alldata.orElse(false)).build());
     }
 }
