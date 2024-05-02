@@ -1,13 +1,9 @@
 package com.javaexercise.challenge.services.impl;
 
+import com.javaexercise.challenge.dtos.CopiesInfoDto;
 import com.javaexercise.challenge.dtos.GetBookByIdRequestDTO;
 import com.javaexercise.challenge.dtos.GetBookResponseDTO;
-import com.javaexercise.challenge.entities.Book;
-import com.javaexercise.challenge.entities.Review;
-import com.javaexercise.challenge.repositories.BookAuthorRepository;
-import com.javaexercise.challenge.repositories.BookCopyRepository;
 import com.javaexercise.challenge.repositories.BookRepository;
-import com.javaexercise.challenge.repositories.ReviewRepository;
 import com.javaexercise.challenge.services.GetBookAdditionalData;
 import com.javaexercise.challenge.services.GetBookById;
 import io.micrometer.observation.annotation.Observed;
@@ -35,7 +31,7 @@ public class GetBookByIdImpl implements GetBookById {
         if(result.isPresent()) {
 
             if (data.getAllData()) {
-                response = getBookAdditionalData.apply(data.getId());
+                response = getBookAdditionalData.apply(CopiesInfoDto.builder().bookId(data.getId()).onlyAvailable(data.getOnlyAvailable()).build());
             }else{
                 response = new GetBookResponseDTO();
             }

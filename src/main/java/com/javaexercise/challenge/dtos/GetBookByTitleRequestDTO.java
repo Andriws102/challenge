@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class GetBookByTitleRequestDTO {
     private String title;
     private Boolean allData;
+    private Boolean onlyAvailable;
 }

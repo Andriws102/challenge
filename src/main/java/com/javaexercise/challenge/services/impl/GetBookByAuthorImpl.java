@@ -1,10 +1,9 @@
 package com.javaexercise.challenge.services.impl;
 
+import com.javaexercise.challenge.dtos.CopiesInfoDto;
 import com.javaexercise.challenge.dtos.GetBookByAuthorRequestDTO;
 import com.javaexercise.challenge.dtos.GetBookResponseDTO;
 import com.javaexercise.challenge.dtos.GetBooksResponseDTO;
-import com.javaexercise.challenge.entities.Author;
-import com.javaexercise.challenge.entities.BookAuthor;
 import com.javaexercise.challenge.repositories.AuthorRepository;
 import com.javaexercise.challenge.repositories.BookAuthorRepository;
 import com.javaexercise.challenge.repositories.BookRepository;
@@ -47,7 +46,7 @@ public class GetBookByAuthorImpl implements GetBookByAuthor {
         response.setBooks(result.stream().map(book -> {
             GetBookResponseDTO getBookResponseDTO;
             if(data.getAllData()){
-                getBookResponseDTO = getBookAdditionalData.apply(book.getId());
+                getBookResponseDTO = getBookAdditionalData.apply(CopiesInfoDto.builder().bookId(book.getId()).onlyAvailable(data.getOnlyAvailable()).build());
             }else{
                 getBookResponseDTO = new GetBookResponseDTO();
             }

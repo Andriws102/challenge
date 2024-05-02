@@ -8,4 +8,6 @@ import java.util.List;
 public interface BookCopyRepository extends JpaRepository<BookCopy,Long> {
 
     List<BookCopy> findByBookId(Long bookId);
+
+    List<BookCopy> findByBookIdAndStatusId(Long bookId, int statusId);
 }

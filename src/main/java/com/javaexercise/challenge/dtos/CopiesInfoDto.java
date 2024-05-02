@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class GetBookByIdRequestDTO {
-    private Long id;
-    private Boolean allData;
+public class CopiesInfoDto {
+    private Long bookId;
     private Boolean onlyAvailable;
 }

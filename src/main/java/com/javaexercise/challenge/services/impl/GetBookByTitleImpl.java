@@ -1,5 +1,6 @@
 package com.javaexercise.challenge.services.impl;
 
+import com.javaexercise.challenge.dtos.CopiesInfoDto;
 import com.javaexercise.challenge.dtos.GetBookByTitleRequestDTO;
 import com.javaexercise.challenge.dtos.GetBookResponseDTO;
 import com.javaexercise.challenge.dtos.GetBooksResponseDTO;
@@ -32,7 +33,7 @@ public class GetBookByTitleImpl implements GetBookByTitle {
         response.setBooks(result.stream().map(book -> {
             GetBookResponseDTO getBookResponseDTO;
             if(data.getAllData()){
-               getBookResponseDTO = getBookAdditionalData.apply(book.getId());
+               getBookResponseDTO = getBookAdditionalData.apply(CopiesInfoDto.builder().bookId(book.getId()).onlyAvailable(data.getOnlyAvailable()).build());
             }else{
                 getBookResponseDTO = new GetBookResponseDTO();
             }

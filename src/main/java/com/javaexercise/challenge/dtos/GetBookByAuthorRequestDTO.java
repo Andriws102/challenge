@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class GetBookByAuthorRequestDTO {
     private String authorName;
     private Boolean allData;
+    private Boolean onlyAvailable;
 }
