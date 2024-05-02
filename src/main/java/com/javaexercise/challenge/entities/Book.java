@@ -27,4 +27,6 @@ public class Book {
     private Set<BookCopy> publishers;
     @OneToMany(mappedBy = "book")
     private Set<BookAuthor> authors;
+    @OneToMany(mappedBy = "book")
+    private Set<Review> reviews;
 }

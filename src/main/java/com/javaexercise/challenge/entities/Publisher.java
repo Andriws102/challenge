@@ -5,7 +5,7 @@ import lombok.*;
 
 import java.util.Set;
 
-@Table(name = "users")
+@Table(name = "publishers")
 @Entity
 @Builder
 @Data

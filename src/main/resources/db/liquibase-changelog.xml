@@ -20,5 +20,14 @@
     <include file="db/changelog/create_reviews_table.sql"/>
 
     <!-- Scripts data test -->
+    <include file="db/testdata/insert_user.sql"/>
+    <include file="db/testdata/insert_book.sql"/>
+    <include file="db/testdata/insert_author.sql"/>
+    <include file="db/testdata/insert_publisher.sql"/>
+    <include file="db/testdata/insert_bookcopies.sql"/>
+    <include file="db/testdata/insert_bookauthor.sql"/>
+    <include file="db/testdata/insert_booking.sql"/>
+    <include file="db/testdata/insert_reviews.sql"/>
+
 
 </databaseChangeLog>

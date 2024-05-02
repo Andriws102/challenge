@@ -21,6 +21,6 @@ public class Author {
     @Column(nullable = false)
     private String lastname;
     private String country;
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "author")
     private Set<BookAuthor> books;
 }

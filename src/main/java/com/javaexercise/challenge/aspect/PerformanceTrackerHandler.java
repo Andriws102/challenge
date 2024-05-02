@@ -2,11 +2,9 @@ package com.javaexercise.challenge.aspect;
 
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationHandler;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Slf4j
 public class PerformanceTrackerHandler implements ObservationHandler<Observation.Context> {
 
     private static final Logger log = LoggerFactory.getLogger(PerformanceTrackerHandler.class);
