@@ -5,26 +5,26 @@ import lombok.*;
 
 import java.util.Date;
 
-@Table(name = "user_accounts")
+@Table(name = "users")
 @Entity
 @Builder
-@Setter
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserAccounts {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private Users user;
     @Column(nullable = false)
-    private String username;
+    private String name;
     @Column(nullable = false)
-    private String password;
+    private String lastname;
+    private int age;
+    @Column(nullable = false)
+    private String email;
+    @Column(nullable = false)
+    private String contactNumber;
     @Column(nullable = false)
     private Date createdAt;
     @Column(nullable = false)

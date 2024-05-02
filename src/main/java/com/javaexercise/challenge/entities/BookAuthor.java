@@ -6,20 +6,19 @@ import lombok.*;
 @Table(name = "books_authors")
 @Entity
 @Builder
-@Setter
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BooksAuthors {
+public class BookAuthor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "book_id", referencedColumnName = "id")
-    private Books book;
-    @OneToOne(cascade = CascadeType.ALL)
+    private Book book;
+    @ManyToOne
     @JoinColumn(name = "author_id", referencedColumnName = "id")
-    private Authors author;
+    private Author author;
     private int orderPosition;
 }

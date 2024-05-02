@@ -3,24 +3,22 @@ package com.javaexercise.challenge.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.util.Set;
 
-@Table(name = "books")
+@Table(name = "users")
 @Entity
 @Builder
-@Setter
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Books {
+public class Publisher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private String title;
-    private String summary;
-    private Date published_at;
-    @Column(nullable = false)
-    private Date created_at;
+    private String name;
+    private String country;
+    @OneToMany(mappedBy = "publisher")
+    private Set<BookCopy> books;
 }

@@ -3,14 +3,15 @@ package com.javaexercise.challenge.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Table(name = "authors")
 @Entity
 @Builder
-@Setter
-@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Authors {
+@Data
+public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,4 +21,6 @@ public class Authors {
     @Column(nullable = false)
     private String lastname;
     private String country;
+    @OneToMany(mappedBy = "book")
+    private Set<BookAuthor> books;
 }

@@ -8,8 +8,7 @@ import java.util.Date;
 @Table(name = "booking")
 @Entity
 @Builder
-@Setter
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Booking {
@@ -19,10 +18,10 @@ public class Booking {
     private Long id;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_copy_id", referencedColumnName = "id")
-    private BooksCopies bookCopy;
+    private BookCopy bookCopy;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private Users user;
+    private User user;
     @Column(nullable = false)
     private Date bookingAt;
     @Column(nullable = false)

@@ -3,24 +3,28 @@ package com.javaexercise.challenge.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Table(name = "books_copies")
+import java.util.Date;
+
+@Table(name = "reviews")
 @Entity
 @Builder
-@Setter
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BooksCopies {
+public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id", referencedColumnName = "id")
-    private Books book;
+    private Book book;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "publisher_id", referencedColumnName = "id")
-    private Publishers publisher;
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+    private String comment;
     @Column(nullable = false)
-    private int statusId;
+    private int rate;
+    @Column(nullable = false)
+    private Date commentedAt;
 }
